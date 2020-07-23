@@ -1,0 +1,4 @@
+__TESTS__/
+charts/
+coverage/
+node_modules/

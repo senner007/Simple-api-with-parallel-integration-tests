@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  node-api:
+    build: .
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment: 
+      - DB_SERVER=host.docker.internal

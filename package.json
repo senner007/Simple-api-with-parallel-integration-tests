@@ -1,0 +1,70 @@
+{
+  "name": "shoppinglist",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "build": "tsc -p .",
+    "test": "jest ./__TESTS__/ --detectOpenHandles --forceExit --coverage",
+    "test-unit": "jest ./__TESTS__/UNIT --detectOpenHandles --forceExit --watch",
+    "start": "nodemon --exec ts-node src/server-run.ts",
+    "prod": "node dist/server-run.js",
+    "db-dev:setup": "cd ./src/ && knex migrate:latest --env development && knex seed:run",
+    "db-dev:clean": "cd ./src/ && knex migrate:rollback --env development",
+    "pretty-check": "npx prettier --check src/**/*.ts __TESTS__/**/*.ts",
+    "pretty-write": "npx prettier --write src/**/*.ts __TESTS__/**/*.ts"
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-instanceof": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^12.12.31",
+    "jest": "^25.2.3",
+    "jest-html-reporter": "^3.0.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^25.2.1"
+  },
+  "dependencies": {
+    "@azure/storage-blob": "^12.0.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@types/dotenv": "^4.0.3",
+    "@types/express": "^4.17.3",
+    "@types/node-fetch": "^2.5.7",
+    "@types/supertest": "^2.0.8",
+    "@types/uniqid": "^5.2.0",
+    "babel-jest": "^25.2.1",
+    "babel-plugin-transform-builtin-extend": "^1.1.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "express-async-handler": "^1.1.4",
+    "firebase-admin": "^9.0.0",
+    "husky": "^4.2.5",
+    "knex": "^0.21.2",
+    "knex-db-manager": "^0.6.1",
+    "moment": "^2.24.0",
+    "mysql2": "^2.1.0",
+    "node-fetch": "^2.6.0",
+    "pg": "^8.3.0",
+    "pg-escape": "^0.2.0",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "super-expressive": "^1.3.0",
+    "ts-node": "^8.8.1",
+    "tslint": "^6.1.2",
+    "typescript": "^3.8.3",
+    "uniqid": "^5.2.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run test"
+    }
+  }
+}

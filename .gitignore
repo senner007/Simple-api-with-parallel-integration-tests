@@ -1,0 +1,12 @@
+node_modules
+dist
+coverage
+.env
+serviceAccountKey.json
+prod-logs.json
+configs/postgrator-production.json
+/test-report.html
+webapp_logs.zip
+/webapp_logs
+*.bacpac
+*.xel
