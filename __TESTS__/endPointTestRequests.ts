@@ -11,7 +11,7 @@ import {
 const app: Express.Application = initServer();
 
 const getListsByUserId = async (parameters: IListGet) => {
-  return await request(app).get(`/api/lists`).send(parameters);
+  return request(app).get(`/api/lists`).send(parameters);
 };
 
 const postListByUserId = async (
@@ -31,7 +31,7 @@ const deleteListById = async (
 };
 
 const getItemsByListId = async (listId: IList['id']) => {
-  return await request(app).get(`/api/lists/${listId}/items`);
+  return request(app).get(`/api/lists/${listId}/items`);
 };
 
 const postItemByListId = async (
@@ -41,7 +41,7 @@ const postItemByListId = async (
   },
   credentials: ICredentials,
 ) => {
-  return await request(app)
+  return request(app)
     .post(`/api/lists/${parameters.listId}/items`)
     .send({ ...credentials, item_id: parameters.itemId });
 };
@@ -53,7 +53,7 @@ const deleteItemById = async (
   },
   credentials: ICredentials,
 ) => {
-  return await request(app)
+  return request(app)
     .delete(`/api/lists/${parameters.listId}/items/${parameters.itemId}`)
     .send({ ...credentials });
 };
