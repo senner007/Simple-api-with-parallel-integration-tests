@@ -19,7 +19,10 @@ describe(`
     await dbManager.truncateDb();
   });
 
-  it('should get lists by user id 1', async () => {
+  it(`should get lists 
+  - by user id 1
+  - and return status code 200
+  `, async () => {
     const response: request.Response = await testRequest.getListsByUserId(
       GET_LISTS_BY_USER_ID_PARAMETERS_STUB,
     );
@@ -28,5 +31,6 @@ describe(`
 
     expect(body[0].name).toEqual('my-list');
     expect(body.length).toEqual(2);
+    expect(response.status).toEqual(200);
   });
 });

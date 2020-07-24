@@ -10,24 +10,24 @@ import {
 } from '../src/controllers/api-controllers/api_interfaces';
 const app: Express.Application = initServer();
 
-const getListsByUserId = async (requestParameters: IListGet) => {
-  return await request(app).get(`/api/lists`).send(requestParameters);
+const getListsByUserId = async (parameters: IListGet) => {
+  return await request(app).get(`/api/lists`).send(parameters);
 };
 
 const postListByUserId = async (
   list_name: IListPost,
-  requestParameters: ICredentials,
+  credentials: ICredentials,
 ) => {
   return request(app)
     .post(`/api/lists`)
-    .send({ ...requestParameters, ...list_name });
+    .send({ ...credentials, ...list_name });
 };
 
 const deleteListById = async (
   listId: IList['id'],
-  requestParameters: ICredentials,
+  credentials: ICredentials,
 ) => {
-  return request(app).delete(`/api/lists/${listId}`).send(requestParameters);
+  return request(app).delete(`/api/lists/${listId}`).send(credentials);
 };
 
 const getItemsByListId = async (listId: IList['id']) => {
@@ -35,23 +35,27 @@ const getItemsByListId = async (listId: IList['id']) => {
 };
 
 const postItemByListId = async (
-  listId: IList['id'],
-  item_id: IItem['id'],
-  requestParameters: ICredentials,
+  parameters: {
+    listId: IList['id'];
+    itemId: IItem['id'];
+  },
+  credentials: ICredentials,
 ) => {
   return await request(app)
-    .post(`/api/lists/${listId}/items`)
-    .send({ ...requestParameters, item_id });
+    .post(`/api/lists/${parameters.listId}/items`)
+    .send({ ...credentials, item_id: parameters.itemId });
 };
 
 const deleteItemById = async (
-  listId: IList['id'],
-  itemId: IItem['id'],
-  requestParameters: ICredentials,
+  parameters: {
+    listId: IList['id'];
+    itemId: IItem['id'];
+  },
+  credentials: ICredentials,
 ) => {
   return await request(app)
-    .delete(`/api/lists/${listId}/items/${itemId}`)
-    .send({ ...requestParameters });
+    .delete(`/api/lists/${parameters.listId}/items/${parameters.itemId}`)
+    .send({ ...credentials });
 };
 
 const testRequest = {

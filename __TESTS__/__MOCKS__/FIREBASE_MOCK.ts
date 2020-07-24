@@ -17,7 +17,7 @@ class FireBaseMock {
   }
 }
 
-const FIREBASE_MOCK = () => {
+const FIREBASE_MOCK_SETUP = () => {
   const mockedFirebase: jest.MockedClass<typeof FireBase> = FireBase as jest.MockedClass<
     typeof FireBase
   >;
@@ -28,4 +28,4 @@ const FIREBASE_MOCK = () => {
   });
 };
 
-export { FIREBASE_MOCK };
+export { FIREBASE_MOCK_SETUP };
