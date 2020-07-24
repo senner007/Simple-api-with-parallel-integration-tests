@@ -3,6 +3,7 @@ import request from 'supertest';
 import { testSeeds } from '../testSeeds';
 import { dbManager } from '../../knex-manager';
 import { testRequest } from '../endPointTestRequests';
+import { IList } from '../../src/controllers/api-controllers/api_interfaces';
 
 describe(`
     /lists - GET
@@ -23,11 +24,9 @@ describe(`
       GET_LISTS_BY_USER_ID_PARAMETERS_STUB,
     );
 
-    const firstList: string = response.body[0].name;
-    const listLength: number = response.body.length;
+    const body: IList[] = response.body as IList[];
 
-    expect(firstList).toEqual('my-list');
-
-    expect(listLength).toEqual(2);
+    expect(body[0].name).toEqual('my-list');
+    expect(body.length).toEqual(2);
   });
 });
