@@ -1,9 +1,9 @@
 import { GET_LISTS_BY_USER_ID_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETERS/GET_LISTS_BY_USER_ID_PARAMETERS_STUB';
 import request from 'supertest';
-import { testSeeds } from '../testSeeds';
 import { dbManager } from '../../knex-manager';
-import { testRequest } from '../endPointTestRequests';
-import { IList } from '../../src/controllers/api-controllers/api_interfaces';
+import { IList } from '../../src/controllers/api.router.interfaces';
+import { TEST_SEEDS } from '../TEST_SEEDS';
+import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
     /lists - GET
@@ -12,7 +12,7 @@ describe(`
     }
   `, () => {
   beforeEach(async () => {
-    await testSeeds();
+    await TEST_SEEDS();
   });
 
   afterEach(async () => {
@@ -23,7 +23,7 @@ describe(`
   - by user id 1
   - and return status code 200
   `, async () => {
-    const response: request.Response = await testRequest.getListsByUserId(
+    const response: request.Response = await TEST_REQUEST.getListsByUserId(
       GET_LISTS_BY_USER_ID_PARAMETERS_STUB,
     );
 

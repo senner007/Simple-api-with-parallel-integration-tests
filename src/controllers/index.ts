@@ -1,5 +1,5 @@
-import api from './api-controllers/api';
+import { apiRouter } from './api.router';
 
 export default {
-  api,
+  apiRouter,
 };

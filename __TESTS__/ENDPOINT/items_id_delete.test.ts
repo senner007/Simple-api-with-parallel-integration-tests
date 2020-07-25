@@ -1,10 +1,10 @@
-import { testRequest } from '../endPointTestRequests';
 import request from 'supertest';
-import { testSeeds } from '../testSeeds';
+import { TEST_SEEDS } from '../TEST_SEEDS';
 import { FIREBASE_MOCK_SETUP } from '../__MOCKS__/FIREBASE_MOCK';
 import { dbManager } from '../../knex-manager';
 import { OWNER_CREDENTIALS_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETERS/OWNER_CREDENTIALS_PARAMETERS_STUB';
-import { EResponseCodes } from '../../src/controllers/api-controllers/api_interfaces';
+import { EResponseCodes } from '../../src/controllers/api.router.interfaces';
+import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
 
 jest.mock('../../src/authentication/firebaseInit');
 
@@ -16,7 +16,7 @@ describe(`
   }
   `, () => {
   beforeEach(async () => {
-    await testSeeds();
+    await TEST_SEEDS();
     FIREBASE_MOCK_SETUP();
   });
 
@@ -29,10 +29,7 @@ describe(`
     - by list id 1 
     - and return status 200
     `, async () => {
-    const listId: number = 1;
-    const itemId: number = 1;
-
-    const response: request.Response = await testRequest.deleteItemById(
+    const response: request.Response = await TEST_REQUEST.deleteItemById(
       {
         listId: 1,
         itemId: 1,
@@ -49,10 +46,7 @@ describe(`
       - with INCORRECT password 
       - and return status 401
     `, async () => {
-    const listId: number = 1;
-    const itemId: number = 1;
-
-    const response: request.Response = await testRequest.deleteItemById(
+    const response: request.Response = await TEST_REQUEST.deleteItemById(
       {
         listId: 1,
         itemId: 1,
@@ -71,7 +65,7 @@ describe(`
     - by list id 1 
     - and return status 400
   `, async () => {
-    const response: request.Response = await testRequest.deleteItemById(
+    const response: request.Response = await TEST_REQUEST.deleteItemById(
       {
         listId: 1,
         itemId: 2,

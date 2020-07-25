@@ -2,7 +2,7 @@ import { Router, NextFunction } from 'express';
 import { Response } from 'express';
 import { IListRequest } from '../../middlewares/middleware.interfaces';
 import { getListsByUserId } from '../../repositories/api-repository';
-import { IListGet, IList } from './api_interfaces';
+import { IListGet, IList } from '../api.router.interfaces';
 import { MIDDLEWARE_VALIDATE_LIST_GET } from '../../middlewares/MIDDLEWARE_VALIDATE_LIST_GET';
 
 const listsGetRouter: Router = Router();

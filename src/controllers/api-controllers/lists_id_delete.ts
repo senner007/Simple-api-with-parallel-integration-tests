@@ -6,7 +6,12 @@ import {
   getUserByUserName,
   deleteListById,
 } from '../../repositories/api-repository';
-import { IUser, EResponseCodes, ERoles, ICredentials } from './api_interfaces';
+import {
+  IUser,
+  EResponseCodes,
+  ERoles,
+  ICredentials,
+} from '../api.router.interfaces';
 import { MIDDLEWARE_AUTHORIZE } from '../../middlewares/MIDDLEWARE_AUTHORIZE';
 import { BadRequest } from '../../httpError/httpError';
 import { MIDDLEWARE_VALIDATE_LIST_ID_ROUTE_PARAMETER } from '../../middlewares/MIDDLEWARE_VALIDATE_LIST_ID_ROUTE_PARAMETER';

@@ -1,43 +1,51 @@
 # Local postgres docker containers
 
-#### Run postgres development development db
+#### Run postgres development db
+
 ```
 docker run --name some-postgres-db -p 5432:5432 -e POSTGRES_DB=initdb -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 ```
 
 #### Run postgres test db
+
 ```
 docker run --name postgres-test-db -p 5433:5432 -e POSTGRES_DB=testdb -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 ```
 
 #### Start stopped container
+
 ```
-docker container start some-postgres-db 
+docker container start some-postgres-db
 ```
 
 # Local environment setup
 
 #### run database migrations
+
 ```
 npm run db-dev:setup
 ```
 
 #### install packages
+
 ```
 npm install
 ```
 
 #### install nodemon
+
 ```
 npm install nodemon -g
 ```
 
 #### run test server
+
 ```
 npm start
 ```
 
 #### run tests
+
 ```
 npm test
 ```
@@ -45,13 +53,15 @@ npm test
 # Run and build local node container
 
 #### Docker Build local
+
 ```
 docker-compose build
 ```
 
 #### Docker Run local
+
 ```
-docker-compose up 
+docker-compose up
 ```
 
 # Environment setup
@@ -61,15 +71,14 @@ docker-compose up
 #### Create a serviceAccountKey.json
 
 {
-    "type": <>,
-    "project_id": <>,
-    "private_key_id": <>,
-    "private_key": <>,
-    "client_email":<>,
-    "client_id": <>,
-    "auth_uri": <>,
-    "token_uri": <>,
-    "auth_provider_x509_cert_url":<>,
-    "client_x509_cert_url": <>
+"type": <>,
+"project_id": <>,
+"private_key_id": <>,
+"private_key": <>,
+"client_email":<>,
+"client_id": <>,
+"auth_uri": <>,
+"token_uri": <>,
+"auth_provider_x509_cert_url":<>,
+"client_x509_cert_url": <>
 }
-  

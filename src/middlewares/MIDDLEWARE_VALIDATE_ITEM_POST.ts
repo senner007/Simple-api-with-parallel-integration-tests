@@ -1,10 +1,7 @@
 import { Response, Request, RequestHandler, NextFunction } from 'express';
 import { IListRequest } from './middleware.interfaces';
 import { ApiValidator } from '../validators/api-validators';
-import {
-  IListPost,
-  IItemPost,
-} from '../controllers/api-controllers/api_interfaces';
+import { IListPost, IItemPost } from '../controllers/api.router.interfaces';
 
 async function MIDDLEWARE_VALIDATE_ITEM_POST(
   req: IListRequest<IItemPost>,

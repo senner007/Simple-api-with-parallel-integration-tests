@@ -1,5 +1,4 @@
 import initServer from '../src/server';
-
 import request, { SuperTest } from 'supertest';
 import {
   IListGet,
@@ -7,7 +6,7 @@ import {
   ICredentials,
   IList,
   IItem,
-} from '../src/controllers/api-controllers/api_interfaces';
+} from '../src/controllers/api.router.interfaces';
 const app: Express.Application = initServer();
 
 const getListsByUserId = async (parameters: IListGet) => {
@@ -58,7 +57,7 @@ const deleteItemById = async (
     .send({ ...credentials });
 };
 
-const testRequest = {
+const TEST_REQUEST = {
   getListsByUserId,
   postListByUserId,
   deleteListById,
@@ -67,4 +66,4 @@ const testRequest = {
   deleteItemById,
 };
 
-export { testRequest };
+export { TEST_REQUEST };

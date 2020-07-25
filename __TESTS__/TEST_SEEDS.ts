@@ -1,6 +1,6 @@
 import { dbManager } from '../knex-manager';
 
-export async function testSeeds() {
+export async function TEST_SEEDS() {
   // TODO : could require all and run sequentially
   await require('../src/seeds/development/01.roles').seed(
     dbManager.knexInstance(),

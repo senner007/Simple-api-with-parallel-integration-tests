@@ -7,7 +7,8 @@ import {
   ERoles,
   IItem,
   IListItem,
-} from '../controllers/api-controllers/api_interfaces';
+  IItemDelete,
+} from '../controllers/api.router.interfaces';
 import { BadRequest } from '../httpError/httpError';
 
 const getListsByUserId: (id: number) => Promise<IList[]> = async (
@@ -72,7 +73,7 @@ const getUserRoleByUserId: (
   return roleName[0].name as ERoles;
 };
 
-const getListItemsByListId: (list_id: IList['id']) => Promise<IItem[]> = async (
+const getItemsByListId: (list_id: IList['id']) => Promise<IItem[]> = async (
   list_id: IList['id'],
 ) => {
   return await knex('list_items')
@@ -81,16 +82,14 @@ const getListItemsByListId: (list_id: IList['id']) => Promise<IItem[]> = async (
     .select('items.id', 'items.name', 'items.price');
 };
 
-const deleteItemById: (
-  fk_list_id: IListItem['fk_list_id'],
-  fk_item_id: IListItem['fk_item_id'],
-) => Promise<number> = async (
-  fk_list_id: IListItem['fk_list_id'],
-  fk_item_id: IListItem['fk_item_id'],
-) => {
+const deleteItemById = async (itemDelete: IItemDelete) => {
   const firstItem: IListItem = await knex('list_items')
-    .where({ fk_list_id, fk_item_id })
-    .first();
+    .where({
+      fk_list_id: itemDelete.fk_list_id,
+      fk_item_id: itemDelete.fk_item_id,
+    })
+    .first()
+    .select('id');
 
   if (firstItem) {
     return await knex('list_items').where({ id: firstItem.id }).del();
@@ -108,6 +107,6 @@ export {
   deleteListById,
   postItemById,
   getUserRoleByUserId,
-  getListItemsByListId,
+  getItemsByListId,
   deleteItemById,
 };

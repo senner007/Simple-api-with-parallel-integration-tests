@@ -3,7 +3,7 @@ import { Response } from 'express';
 import { MIDDLEWARE_AUTHENTICATE } from '../../middlewares/MIDDLEWARE_AUTHENTICATE';
 import { IListRequest } from '../../middlewares/middleware.interfaces';
 import { postItemById } from '../../repositories/api-repository';
-import { EResponseCodes, IItemPost, ERoles } from './api_interfaces';
+import { EResponseCodes, IItemPost, ERoles } from '../api.router.interfaces';
 import { MIDDLEWARE_AUTHORIZE } from '../../middlewares/MIDDLEWARE_AUTHORIZE';
 import { BadRequest } from '../../httpError/httpError';
 import { MIDDLEWARE_VALIDATE_ITEM_POST } from '../../middlewares/MIDDLEWARE_VALIDATE_ITEM_POST';

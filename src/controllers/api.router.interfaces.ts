@@ -47,6 +47,11 @@ export interface IListPost {
   list_name: IList['name'];
 }
 
+export interface IItemDelete {
+  fk_list_id: IListItem['fk_list_id'];
+  fk_item_id: IListItem['fk_item_id'];
+}
+
 export enum EResponseCodes {
   OK = 200,
   BADREQUEST = 400,

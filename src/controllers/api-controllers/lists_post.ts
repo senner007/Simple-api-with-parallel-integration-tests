@@ -13,7 +13,7 @@ import {
   EResponseCodes,
   ERoles,
   ICredentials,
-} from './api_interfaces';
+} from '../api.router.interfaces';
 import { MIDDLEWARE_AUTHORIZE } from '../../middlewares/MIDDLEWARE_AUTHORIZE';
 
 const listsPostRouter: Router = Router();

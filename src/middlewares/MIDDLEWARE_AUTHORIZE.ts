@@ -5,7 +5,7 @@ import {
   ICredentials,
   IUser,
   ERoles,
-} from '../controllers/api-controllers/api_interfaces';
+} from '../controllers/api.router.interfaces';
 import {
   getUserRoleByUserId,
   getUserByUserName,

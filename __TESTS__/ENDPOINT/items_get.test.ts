@@ -1,15 +1,15 @@
-import { testRequest } from '../endPointTestRequests';
 import request from 'supertest';
-import { testSeeds } from '../testSeeds';
 import { dbManager } from '../../knex-manager';
-import { IItem } from '../../src/controllers/api-controllers/api_interfaces';
+import { IItem } from '../../src/controllers/api.router.interfaces';
+import { TEST_SEEDS } from '../TEST_SEEDS';
+import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
     /lists/:id/items - GET
     {}
   `, () => {
   beforeEach(async () => {
-    await testSeeds();
+    await TEST_SEEDS();
   });
 
   afterEach(async () => {
@@ -17,7 +17,7 @@ describe(`
   });
 
   it('should get items by list id 1', async () => {
-    const response: request.Response = await testRequest.getItemsByListId(1);
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
 
     const body: IItem[] = response.body as IItem[];
 

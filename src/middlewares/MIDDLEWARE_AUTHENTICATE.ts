@@ -2,7 +2,7 @@ import { Response, NextFunction } from 'express';
 import { IListRequest } from './middleware.interfaces';
 import { FireBase } from '../authentication/firebaseInit';
 import { Unauthorized } from '../httpError/httpError';
-import { ICredentials } from '../controllers/api-controllers/api_interfaces';
+import { ICredentials } from '../controllers/api.router.interfaces';
 
 async function MIDDLEWARE_AUTHENTICATE(
   req: IListRequest<ICredentials>,

@@ -1,7 +1,7 @@
 import { Response, NextFunction } from 'express';
 import { IListRequest } from './middleware.interfaces';
 import { ApiValidator } from '../validators/api-validators';
-import { IListGet } from '../controllers/api-controllers/api_interfaces';
+import { IListGet } from '../controllers/api.router.interfaces';
 
 async function MIDDLEWARE_VALIDATE_LIST_GET(
   req: IListRequest<IListGet>,

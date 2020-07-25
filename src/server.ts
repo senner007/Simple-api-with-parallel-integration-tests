@@ -1,12 +1,12 @@
 import express, { Response, Request, Application, NextFunction } from 'express';
-import routes from './controllers';
-import { BadRequest, GeneralError, Unauthorized } from './httpError/httpError';
+import { BadRequest, Unauthorized } from './httpError/httpError';
+import { apiRouter } from './controllers/api.router';
 
 function initServer(): Application {
   const app: Application = express();
   app.use(express.json());
 
-  app.use('/api', routes.api);
+  app.use('/api', apiRouter);
 
   const handleErrors = async (
     err: Error,
