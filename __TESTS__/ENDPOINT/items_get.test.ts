@@ -9,11 +9,402 @@ describe(`
     {}
   `, () => {
   beforeEach(async () => {
-    await TEST_SEEDS();
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
 
   afterEach(async () => {
-    await dbManager.truncateDb();
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
+  });
+
+  it('should get items by list id 1', async () => {
+    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+
+    const body: IItem[] = response.body as IItem[];
+
+    expect(body.length).toEqual(1);
+    expect(body[0].name).toEqual('some-item');
+    expect(body[0].price).toEqual(25);
+  });
+});
+
+describe(`
+    /lists/:id/items - GET
+    {}
+  `, () => {
+  beforeEach(async () => {
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
+  });
+
+  afterEach(async () => {
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
   });
 
   it('should get items by list id 1', async () => {

@@ -16,12 +16,12 @@ describe(`
     }
   `, () => {
   beforeEach(async () => {
-    await TEST_SEEDS();
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
     FIREBASE_MOCK_SETUP();
   });
 
   afterEach(async () => {
-    await dbManager.truncateDb();
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
   });
 
   it(`should delete owned list 

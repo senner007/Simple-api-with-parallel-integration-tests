@@ -12,11 +12,11 @@ describe(`
     }
   `, () => {
   beforeEach(async () => {
-    await TEST_SEEDS();
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
 
   afterEach(async () => {
-    await dbManager.truncateDb();
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
   });
 
   it(`should get lists 

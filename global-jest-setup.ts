@@ -1,8 +1,11 @@
 import { dbManager } from './knex-manager';
 
 module.exports = async () => {
-    process.env.ENVIRONMENT = 'test'
-    await dbManager.dropDb('testdb');
-    await dbManager.createDb('testdb');
-    await dbManager.migrateDb();
-}
+  process.env.ENVIRONMENT = 'test';
+
+  for (let i = 1; i <= 5; i++) {
+    await dbManager(i).dropDb('testdb');
+    await dbManager(i).createDb('testdb');
+    await dbManager(i).migrateDb();
+  }
+};

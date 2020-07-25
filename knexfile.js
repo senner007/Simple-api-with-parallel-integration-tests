@@ -12,12 +12,12 @@ module.exports = {
     },
     pool: { min: 0, max: 10 },
     seeds: {
-      directory: path.join(__dirname, '/src/seeds/development')
+      directory: path.join(__dirname, '/src/seeds/development'),
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: "./src/migrations"
-    }
+      directory: './src/migrations',
+    },
   },
   test: {
     client: 'pg',
@@ -28,14 +28,14 @@ module.exports = {
       user: 'postgres',
       password: 'mysecretpassword',
     },
-    pool: { min: 0, max: 10 },
+    pool: { min: 0, max: 500 },
     seeds: {
       directory: path.join(__dirname, '/src/seeds/production'),
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: "./src/migrations"
-    }
+      directory: './src/migrations',
+    },
   },
   production: {
     client: 'pg',
@@ -51,7 +51,7 @@ module.exports = {
     },
     migrations: {
       tableName: 'knex_migrations',
-      directory: "./src/migrations"
-    }
+      directory: './src/migrations',
+    },
   },
 };

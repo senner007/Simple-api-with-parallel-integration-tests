@@ -1,4 +1,4 @@
-process.env.ENVIRONMENT = "DEVELOPMENT";
+process.env.ENVIRONMENT = 'DEVELOPMENT';
 
 module.exports = {
   globalSetup: './global-jest-setup.ts',
@@ -6,24 +6,28 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  bail : true,
+  bail: true,
   testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['./jest-setup.ts'],
-  setupFiles: ["dotenv/config"],
+  setupFiles: ['dotenv/config'],
+  maxWorkers: 5,
   globals: {
     'ts-jest': {
       diagnostics: {
-        ignoreCodes: []
-      }
-    }
+        ignoreCodes: [],
+      },
+    },
   },
   reporters: [
-    "default",
-    ["./node_modules/jest-html-reporter", {
-      "pageTitle": "Shopping lists test suites",
-      "sort" : "titleAsc",
-      "outputPath" : "coverage/test-report.html"
-    }]
-  ]
-}
+    'default',
+    [
+      './node_modules/jest-html-reporter',
+      {
+        pageTitle: 'Shopping lists test suites',
+        sort: 'titleAsc',
+        outputPath: 'coverage/test-report.html',
+      },
+    ],
+  ],
+};
