@@ -28,7 +28,7 @@ module.exports = {
       user: 'postgres',
       password: 'mysecretpassword',
     },
-    pool: { min: 0, max: 500 },
+    pool: { min: 0, max: 5 },
     seeds: {
       directory: path.join(__dirname, '/src/seeds/production'),
     },

@@ -11,7 +11,7 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['./jest-setup.ts'],
   setupFiles: ['dotenv/config'],
-  maxWorkers: 5,
+  maxWorkers: 4,
   globals: {
     'ts-jest': {
       diagnostics: {

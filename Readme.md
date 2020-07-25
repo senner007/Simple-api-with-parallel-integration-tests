@@ -12,6 +12,12 @@
 docker container start some-postgres-db
 ```
 
+#### Stop all running containers:
+
+```
+docker rm $(docker ps -a -q) -f
+```
+
 # Local environment setup
 
 #### run database migrations
