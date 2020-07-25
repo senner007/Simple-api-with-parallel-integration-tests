@@ -3,7 +3,7 @@
 #### Run postgres development and test dbs
 
 ```
-./test_db.sh
+./db_setup.sh
 ```
 
 #### Start stopped container
