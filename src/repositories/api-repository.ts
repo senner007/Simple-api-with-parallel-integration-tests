@@ -7,6 +7,7 @@ import {
   ERoles,
   IListItem,
   IItemDelete,
+  IItem,
 } from '../controllers/api.router.interfaces';
 import { BadRequest } from '../httpError/httpError';
 
@@ -62,14 +63,14 @@ export async function getUserRoleByUserId(
   return roleName[0].name as ERoles;
 }
 
-export async function getItemsByListId(list_id: IList['id']): Promise<IList[]> {
+export async function getItemsByListId(list_id: IList['id']): Promise<IItem[]> {
   return knex('list_items')
     .join('items', 'items.id', '=', 'list_items.fk_item_id')
     .where('list_items.fk_list_id', '=', list_id)
     .select('items.id', 'items.name', 'items.price');
 }
 
-export async function deleteItemById(itemDelete: IItemDelete): Promise<void> {
+export async function deleteItemById(itemDelete: IItemDelete): Promise<number> {
   const firstItem: IListItem = await knex('list_items')
     .where({
       fk_list_id: itemDelete.fk_list_id,
