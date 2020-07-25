@@ -1,15 +1,9 @@
 # Local postgres docker containers
 
-#### Run postgres development db
+#### Run postgres development and test dbs
 
 ```
-docker run --name some-postgres-db -p 5432:5432 -e POSTGRES_DB=initdb -e POSTGRES_PASSWORD=mysecretpassword -d postgres
-```
-
-#### Run postgres test db
-
-```
-docker run --name postgres-test-db -p 5433:5432 -e POSTGRES_DB=testdb -e POSTGRES_PASSWORD=mysecretpassword -d postgres
+./test_db.sh
 ```
 
 #### Start stopped container
