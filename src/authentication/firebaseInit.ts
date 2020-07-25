@@ -1,7 +1,7 @@
 import firebaseAdmin from 'firebase-admin';
 import { getTokenFromCredentials } from './getTokenFromCredentials';
 
-var serviceAccount = require('../../serviceAccountKey.json');
+const serviceAccount: unknown = require('../../serviceAccountKey.json');
 
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),

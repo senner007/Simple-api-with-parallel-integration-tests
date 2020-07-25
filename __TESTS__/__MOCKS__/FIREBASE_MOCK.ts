@@ -6,6 +6,9 @@ class FireBaseMock {
     password: string,
   ): Promise<string> {
     // console.log('getTokenFromCredentials mock');
+    if (user !== process.env.OWNER_USER_NAME) {
+      throw new Error();
+    }
     if (password !== process.env.OWNER_PASSWORD) {
       throw new Error();
     }
@@ -17,7 +20,7 @@ class FireBaseMock {
   }
 }
 
-const FIREBASE_MOCK_SETUP = () => {
+const FIREBASE_MOCK_SETUP: () => void = () => {
   const mockedFirebase: jest.MockedClass<typeof FireBase> = FireBase as jest.MockedClass<
     typeof FireBase
   >;

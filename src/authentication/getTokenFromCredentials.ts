@@ -1,7 +1,10 @@
 import fetch, { Response } from 'node-fetch';
-export async function getTokenFromCredentials(user: string, password: string) {
-  const key = process.env.FIREBASE_API_KEY;
-  const body = {
+export async function getTokenFromCredentials(
+  user: string,
+  password: string,
+): Promise<string> {
+  const key: string = process.env.FIREBASE_API_KEY;
+  const body: Object = {
     email: user,
     password: password,
     returnSecureToken: true,
