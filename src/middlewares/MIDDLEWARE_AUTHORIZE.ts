@@ -1,5 +1,5 @@
-import { Response, Request, RequestHandler, NextFunction } from 'express';
-import { IListRequest, middleware } from './middleware.interfaces';
+import { Response, NextFunction } from 'express';
+import { IListRequest } from './middleware.interfaces';
 import { Unauthorized } from '../httpError/httpError';
 import {
   ICredentials,
@@ -11,7 +11,13 @@ import {
   getUserByUserName,
 } from '../repositories/api-repository';
 
-function MIDDLEWARE_AUTHORIZE(...roles: ERoles[]): middleware {
+export type TypeAuthorizeMiddleware = (
+  req: IListRequest<ICredentials>,
+  res: Response<any>,
+  next: NextFunction,
+) => Promise<void>;
+
+function MIDDLEWARE_AUTHORIZE(...roles: ERoles[]): TypeAuthorizeMiddleware {
   return async function (
     req: IListRequest<ICredentials>,
     res: Response,
