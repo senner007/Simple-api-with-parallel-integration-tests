@@ -1,8 +1,6 @@
-process.env.ENVIRONMENT = 'DEVELOPMENT';
-
 module.exports = {
   globalSetup: './global-jest-setup.ts',
-  roots: ['<rootDir>/__TESTS__'],
+  roots: ['../__TESTS__'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
@@ -22,7 +20,7 @@ module.exports = {
   reporters: [
     'default',
     [
-      './node_modules/jest-html-reporter',
+      '../node_modules/jest-html-reporter',
       {
         pageTitle: 'Shopping lists test suites',
         sort: 'titleAsc',

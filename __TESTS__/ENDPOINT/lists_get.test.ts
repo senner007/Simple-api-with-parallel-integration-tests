@@ -15,7 +15,7 @@ describe(`
     await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
   });
 

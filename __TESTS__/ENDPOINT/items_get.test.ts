@@ -8,11 +8,11 @@ describe(`
     /lists/:id/items - GET
     {}
   `, () => {
-  beforeEach(async () => {
+  beforeAll(async () => {
     await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
 
-  afterEach(async () => {
+  afterAll(async () => {
     await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
   });
 

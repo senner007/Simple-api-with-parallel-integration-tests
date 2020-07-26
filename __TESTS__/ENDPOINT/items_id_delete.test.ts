@@ -15,9 +15,10 @@ describe(`
       "user_password": string,
   }
   `, () => {
+  FIREBASE_MOCK_SETUP();
+
   beforeEach(async () => {
     await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
-    FIREBASE_MOCK_SETUP();
   });
 
   afterEach(async () => {

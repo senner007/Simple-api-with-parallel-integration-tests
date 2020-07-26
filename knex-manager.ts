@@ -1,9 +1,8 @@
-import { threadsToPorts } from './threadsToPorts';
-
-const config = require('./knexfile.js');
+import { threadsToPorts } from './jest/threadsToPorts';
+import { config, IConfigEnvironment } from './knexfile';
 
 const dbManager = (thread: number) => {
-  const configWithPort = config[process.env.ENVIRONMENT];
+  const configWithPort: IConfigEnvironment = config[process.env.ENVIRONMENT];
   configWithPort.connection.port = threadsToPorts[thread];
 
   return require('knex-db-manager').databaseManagerFactory({
