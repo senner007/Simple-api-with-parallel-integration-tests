@@ -6,8 +6,10 @@ module.exports = async () => {
   const numberOfThreads: number = 4;
 
   for (let i = 1; i <= numberOfThreads; i++) {
-    await dbManager(i).dropDb('testdb');
-    await dbManager(i).createDb('testdb');
-    await dbManager(i).migrateDb();
+    const dbManagerInstance = dbManager(i);
+    await dbManagerInstance.dropDb('testdb');
+    await dbManagerInstance.createDb('testdb');
+    await dbManagerInstance.migrateDb();
+    dbManagerInstance.close();
   }
 };
