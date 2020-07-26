@@ -15,13 +15,14 @@ describe(`
       "user_password": string,
   }
   `, () => {
+  FIREBASE_MOCK_SETUP();
+
   beforeEach(async () => {
-    await TEST_SEEDS();
-    FIREBASE_MOCK_SETUP();
+    await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
 
   afterEach(async () => {
-    await dbManager.truncateDb();
+    await dbManager(Number(process.env.JEST_WORKER_ID)).truncateDb();
   });
 
   it(`should delete : 

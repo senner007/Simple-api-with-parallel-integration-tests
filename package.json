@@ -5,7 +5,7 @@
   "main": "src/server.ts",
   "scripts": {
     "build": "tsc -p .",
-    "test": "jest ./__TESTS__/ --detectOpenHandles --forceExit --coverage",
+    "test": "jest --config jest/jest.config.js ./__TESTS__/ --forceExit --coverage",
     "start": "nodemon --exec ts-node src/server-run.ts",
     "prod": "node dist/server-run.js",
     "db-dev:setup": "cd ./src/ && knex migrate:latest --env development && knex seed:run",
