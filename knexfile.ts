@@ -1,22 +1,14 @@
+import Knex, { PgConnectionConfig } from 'knex';
+
 const path = require('path');
 require('dotenv').config({ path: '.env' });
 
-export interface IConfigEnvironment {
-  client: string;
-  pool: Object;
-  seeds: Object;
-  migrations: Object;
-  connection: {
-    port: number;
-    host: string;
-    database: string;
-    user: string;
-    password: string;
-  };
+export interface IPgConfig extends Knex.Config {
+  connection: PgConnectionConfig;
 }
 
 export interface IConfig {
-  [t: string]: IConfigEnvironment;
+  [t: string]: IPgConfig;
 }
 
 const config: IConfig = {
@@ -76,4 +68,4 @@ const config: IConfig = {
   },
 };
 
-export { config };
+module.exports = config;
