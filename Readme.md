@@ -70,7 +70,7 @@ docker-compose up
 
 #### Create and .env file from .env.example
 
-put email and password in .env file
+put email, password and firebase api key in .env file
 
 #### Create a serviceAccountKey.json
 
