@@ -153,8 +153,7 @@
     },
     "linterOptions": {
         "exclude": [
-          "**/node_modules/**",
-          "jest-setup.ts"
+          "**/node_modules/**"
         ]
     }
 

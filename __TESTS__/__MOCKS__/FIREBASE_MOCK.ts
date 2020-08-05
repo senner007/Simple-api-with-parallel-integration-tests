@@ -1,11 +1,14 @@
 import { FireBase } from '../../src/authentication/firebaseInit';
+import firebaseAdmin from 'firebase-admin';
+
+jest.mock('firebase-admin');
+jest.mock('../../src/authentication/firebaseInit');
 
 class FireBaseMock {
   public async getTokenFromCredentials(
     user: string,
     password: string,
   ): Promise<string> {
-    // console.log('getTokenFromCredentials mock');
     if (user !== process.env.OWNER_USER_NAME) {
       throw new Error();
     }
@@ -15,7 +18,6 @@ class FireBaseMock {
     return 'fake_token';
   }
   public async verifyToken(): Promise<boolean> {
-    // console.log('verifyToken mock');
     return true;
   }
 }

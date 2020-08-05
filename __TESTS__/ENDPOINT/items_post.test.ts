@@ -1,12 +1,9 @@
 import request from 'supertest';
-import { FIREBASE_MOCK_SETUP } from '../__MOCKS__/FIREBASE_MOCK';
 import { dbManager } from '../../knex-manager';
 import { OWNER_CREDENTIALS_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETERS/OWNER_CREDENTIALS_PARAMETERS_STUB';
 import { EResponseCodes } from '../../src/controllers/api.router.interfaces';
 import { TEST_SEEDS } from '../TEST_SEEDS';
 import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
-
-jest.mock('../../src/authentication/firebaseInit');
 
 describe(`
     /lists/:id/items - POST
@@ -16,7 +13,7 @@ describe(`
       "item_id": number
     }
   `, () => {
-  FIREBASE_MOCK_SETUP();
+
 
   beforeEach(async () => {
     await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));

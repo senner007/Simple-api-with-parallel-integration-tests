@@ -3,13 +3,14 @@ import { getTokenFromCredentials } from './getTokenFromCredentials';
 
 const serviceAccount: unknown = require('../../serviceAccountKey.json');
 
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+  databaseURL: 'https://shoppinglist-fb43e.firebaseio.com',
+});
+
+
+
 class FireBase {
-  constructor() {
-    firebaseAdmin.initializeApp({
-      credential: firebaseAdmin.credential.cert(serviceAccount),
-      databaseURL: 'https://shoppinglist-fb43e.firebaseio.com',
-    });
-  }
   public async getTokenFromCredentials(
     user: string,
     password: string,
