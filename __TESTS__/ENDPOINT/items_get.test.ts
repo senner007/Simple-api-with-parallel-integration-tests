@@ -1,8 +1,7 @@
-import request from 'supertest';
 import { dbManager } from '../../knex-manager';
 import { IItem } from '../../src/controllers/api.router.interfaces';
 import { TEST_SEEDS } from '../TEST_SEEDS';
-import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
+import { testRequests, ITestResponse } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
     /lists/:id/items - GET
@@ -17,9 +16,11 @@ describe(`
   });
 
   it('should get items by list id 1', async () => {
-    const response: request.Response = await TEST_REQUEST.getItemsByListId(1);
+    const response: ITestResponse<
+      IItem[]
+    > = await testRequests.getItemsByListId(1);
 
-    const body: IItem[] = response.body as IItem[];
+    const body: IItem[] = response.body;
 
     expect(body.length).toEqual(1);
     expect(body[0].name).toEqual('some-item');

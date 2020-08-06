@@ -3,7 +3,7 @@ import { TEST_SEEDS } from '../TEST_SEEDS';
 import { dbManager } from '../../knex-manager';
 import { OWNER_CREDENTIALS_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETERS/OWNER_CREDENTIALS_PARAMETERS_STUB';
 import { EResponseCodes } from '../../src/controllers/api.router.interfaces';
-import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
+import { testRequests } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
     /lists/:id/items/:item_id - DELETE
@@ -12,7 +12,6 @@ describe(`
       "user_password": string,
   }
   `, () => {
-
   beforeEach(async () => {
     await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
@@ -26,7 +25,7 @@ describe(`
     - by list id 1 
     - and return status 200
     `, async () => {
-    const response: request.Response = await TEST_REQUEST.deleteItemById(
+    const response: request.Response = await testRequests.deleteItemById(
       {
         listId: 1,
         itemId: 1,
@@ -43,7 +42,7 @@ describe(`
       - with INCORRECT password 
       - and return status 401
     `, async () => {
-    const response: request.Response = await TEST_REQUEST.deleteItemById(
+    const response: request.Response = await testRequests.deleteItemById(
       {
         listId: 1,
         itemId: 1,
@@ -62,7 +61,7 @@ describe(`
     - by list id 1 
     - and return status 400
   `, async () => {
-    const response: request.Response = await TEST_REQUEST.deleteItemById(
+    const response: request.Response = await testRequests.deleteItemById(
       {
         listId: 1,
         itemId: 2,

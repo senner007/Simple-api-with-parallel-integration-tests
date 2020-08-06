@@ -8,7 +8,14 @@ function initServer(): Application {
 
   app.use('/api', apiRouter);
 
-  const handleErrors = async (
+  type TypeHandleErrors = (
+    err: Error,
+    req: Request,
+    res: Response,
+    next: NextFunction,
+  ) => Promise<express.Response<unknown>>;
+
+  const handleErrors: TypeHandleErrors = async (
     err: Error,
     req: Request,
     res: Response,

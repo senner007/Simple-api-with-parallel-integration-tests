@@ -3,7 +3,7 @@ import { dbManager } from '../../knex-manager';
 import { OWNER_CREDENTIALS_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETERS/OWNER_CREDENTIALS_PARAMETERS_STUB';
 import { EResponseCodes } from '../../src/controllers/api.router.interfaces';
 import { TEST_SEEDS } from '../TEST_SEEDS';
-import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
+import { testRequests } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
     /lists/:id/items - POST
@@ -13,8 +13,6 @@ describe(`
       "item_id": number
     }
   `, () => {
-
-
   beforeEach(async () => {
     await TEST_SEEDS(Number(process.env.JEST_WORKER_ID));
   });
@@ -26,7 +24,7 @@ describe(`
   it(`should post item 1
   - by list id 1 
   - and return status 200`, async () => {
-    const response: request.Response = await TEST_REQUEST.postItemByListId(
+    const response: request.Response = await testRequests.postItemByListId(
       {
         listId: 1,
         itemId: 1,
@@ -40,7 +38,7 @@ describe(`
   it(`should not post item 1
   - by non existing list id 4 
   - and return status 400`, async () => {
-    const response: request.Response = await TEST_REQUEST.postItemByListId(
+    const response: request.Response = await testRequests.postItemByListId(
       {
         listId: 4,
         itemId: 1,

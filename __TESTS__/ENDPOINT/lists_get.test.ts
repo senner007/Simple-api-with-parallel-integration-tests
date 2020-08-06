@@ -3,7 +3,7 @@ import request from 'supertest';
 import { dbManager } from '../../knex-manager';
 import { IList } from '../../src/controllers/api.router.interfaces';
 import { TEST_SEEDS } from '../TEST_SEEDS';
-import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
+import { testRequests, ITestResponse } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
     /lists - GET
@@ -23,11 +23,13 @@ describe(`
   - by user id 1
   - and return status code 200
   `, async () => {
-    const response: request.Response = await TEST_REQUEST.getListsByUserId(
+    const response: ITestResponse<
+      IList[]
+    > = await testRequests.getListsByUserId(
       GET_LISTS_BY_USER_ID_PARAMETERS_STUB,
     );
 
-    const body: IList[] = response.body as IList[];
+    const body: IList[] = response.body;
 
     expect(body[0].name).toEqual('my-list');
     expect(body.length).toEqual(2);

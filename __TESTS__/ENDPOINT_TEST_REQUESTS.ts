@@ -9,61 +9,64 @@ import {
 } from '../src/controllers/api.router.interfaces';
 const app: Express.Application = initServer();
 
-const getListsByUserId = async (parameters: IListGet) => {
-  return request(app).get(`/api/lists`).send(parameters);
-};
+export interface ITestResponse<T> extends request.Response {
+  body: T;
+}
 
-const postListByUserId = async (
-  list_name: IListPost,
-  credentials: ICredentials,
-) => {
-  return request(app)
-    .post(`/api/lists`)
-    .send({ ...credentials, ...list_name });
-};
+class TestRequests {
+  public async getListsByUserId(
+    parameters: IListGet,
+  ): Promise<ITestResponse<IList[]>> {
+    return request(app).get(`/api/lists`).send(parameters);
+  }
 
-const deleteListById = async (
-  listId: IList['id'],
-  credentials: ICredentials,
-) => {
-  return request(app).delete(`/api/lists/${listId}`).send(credentials);
-};
+  public async postListByUserId(
+    list_name: IListPost,
+    credentials: ICredentials,
+  ): Promise<request.Response> {
+    return request(app)
+      .post(`/api/lists`)
+      .send({ ...credentials, ...list_name });
+  }
 
-const getItemsByListId = async (listId: IList['id']) => {
-  return request(app).get(`/api/lists/${listId}/items`);
-};
+  public async deleteListById(
+    listId: IList['id'],
+    credentials: ICredentials,
+  ): Promise<request.Response> {
+    return request(app).delete(`/api/lists/${listId}`).send(credentials);
+  }
 
-const postItemByListId = async (
-  parameters: {
-    listId: IList['id'];
-    itemId: IItem['id'];
-  },
-  credentials: ICredentials,
-) => {
-  return request(app)
-    .post(`/api/lists/${parameters.listId}/items`)
-    .send({ ...credentials, item_id: parameters.itemId });
-};
+  public async getItemsByListId(
+    listId: IList['id'],
+  ): Promise<ITestResponse<IItem[]>> {
+    return request(app).get(`/api/lists/${listId}/items`);
+  }
 
-const deleteItemById = async (
-  parameters: {
-    listId: IList['id'];
-    itemId: IItem['id'];
-  },
-  credentials: ICredentials,
-) => {
-  return request(app)
-    .delete(`/api/lists/${parameters.listId}/items/${parameters.itemId}`)
-    .send({ ...credentials });
-};
+  public async postItemByListId(
+    parameters: {
+      listId: IList['id'];
+      itemId: IItem['id'];
+    },
+    credentials: ICredentials,
+  ): Promise<request.Response> {
+    return request(app)
+      .post(`/api/lists/${parameters.listId}/items`)
+      .send({ ...credentials, item_id: parameters.itemId });
+  }
 
-const TEST_REQUEST = {
-  getListsByUserId,
-  postListByUserId,
-  deleteListById,
-  getItemsByListId,
-  postItemByListId,
-  deleteItemById,
-};
+  public async deleteItemById(
+    parameters: {
+      listId: IList['id'];
+      itemId: IItem['id'];
+    },
+    credentials: ICredentials,
+  ): Promise<request.Response> {
+    return request(app)
+      .delete(`/api/lists/${parameters.listId}/items/${parameters.itemId}`)
+      .send({ ...credentials });
+  }
+}
 
-export { TEST_REQUEST };
+const testRequests: TestRequests = new TestRequests();
+
+export { testRequests };

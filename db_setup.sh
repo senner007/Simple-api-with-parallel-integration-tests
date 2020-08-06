@@ -4,8 +4,6 @@ docker stop postgres-test-db1 || true && docker rm postgres-test-db1 -f || true
 docker stop postgres-test-db2 || true && docker rm postgres-test-db2 -f || true
 docker stop postgres-test-db3 || true && docker rm postgres-test-db3 -f || true
 docker stop postgres-test-db4 || true && docker rm postgres-test-db4 -f || true
-
-# docker stop postgres-test-db3 || true && docker rm postgres-test-db3 -f || true
 echo ""
 echo "Start development container:"
 docker run --name some-postgres-db -p 5432:5432 -e POSTGRES_DB=initdb -e POSTGRES_PASSWORD=mysecretpassword -d postgres

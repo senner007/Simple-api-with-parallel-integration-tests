@@ -2,7 +2,15 @@ import { threadsToPorts } from './jest/threadsToPorts';
 import { IConfig, IPgConfig } from './knexfile';
 import * as config from './knexfile';
 
-const dbManager = (thread: number) => {
+export interface IDbManager {
+  dropDb: (db: string) => Promise<void>;
+  createDb: (db: string) => Promise<void>;
+  migrateDb: () => Promise<void>;
+  close: () => Promise<void>;
+  truncateDb: () => Promise<void>;
+}
+
+const dbManager: (thread: number) => IDbManager = (thread: number) => {
   const configWithPort: IPgConfig = (config as IConfig)[
     process.env.ENVIRONMENT
   ];

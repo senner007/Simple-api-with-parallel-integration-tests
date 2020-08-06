@@ -3,7 +3,7 @@ import { POST_LIST_BY_USER_ID_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETER
 import { dbManager } from '../../knex-manager';
 import { OWNER_CREDENTIALS_PARAMETERS_STUB } from '../__STUBS__/API_PARAMETERS/OWNER_CREDENTIALS_PARAMETERS_STUB';
 import { EResponseCodes } from '../../src/controllers/api.router.interfaces';
-import { TEST_REQUEST } from '../ENDPOINT_TEST_REQUESTS';
+import { testRequests } from '../ENDPOINT_TEST_REQUESTS';
 import { TEST_SEEDS } from '../TEST_SEEDS';
 
 describe(`
@@ -27,7 +27,7 @@ describe(`
     - by user id 1 
     - and return status 200
     `, async () => {
-    const response: request.Response = await TEST_REQUEST.postListByUserId(
+    const response: request.Response = await testRequests.postListByUserId(
       POST_LIST_BY_USER_ID_PARAMETERS_STUB,
       OWNER_CREDENTIALS_PARAMETERS_STUB,
     );
@@ -41,7 +41,7 @@ describe(`
   - by user id 1 
   - and return status 400
   `, async () => {
-    const response: request.Response = await TEST_REQUEST.postListByUserId(
+    const response: request.Response = await testRequests.postListByUserId(
       { list_name: 'foo' },
       OWNER_CREDENTIALS_PARAMETERS_STUB,
     );
