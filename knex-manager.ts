@@ -1,6 +1,7 @@
 import { threadsToPorts } from './jest/threadsToPorts';
 import { IConfig, IPgConfig } from './knexfile';
 import * as config from './knexfile';
+import Knex from 'knex';
 
 export interface IDbManager {
   dropDb: (db: string) => Promise<void>;
@@ -8,6 +9,7 @@ export interface IDbManager {
   migrateDb: () => Promise<void>;
   close: () => Promise<void>;
   truncateDb: () => Promise<void>;
+  knexInstance: () => Knex;
 }
 
 const dbManager: (thread: number) => IDbManager = (thread: number) => {

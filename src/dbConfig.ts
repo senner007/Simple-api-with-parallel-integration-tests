@@ -3,7 +3,7 @@ import { IConfig, IPgConfig } from '../knexfile';
 import { threadsToPorts } from '../jest/threadsToPorts';
 import * as config from '../knexfile';
 
-const knex = (() => {
+const knex: Knex = (() => {
   const configWithPort: IPgConfig = (config as IConfig)[
     process.env.ENVIRONMENT
   ];

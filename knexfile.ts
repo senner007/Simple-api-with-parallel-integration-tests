@@ -1,7 +1,8 @@
 import Knex, { PgConnectionConfig } from 'knex';
+import * as path from 'path';
+import * as dotenv from 'dotenv';
 
-const path = require('path');
-require('dotenv').config({ path: '.env' });
+dotenv.config({ path: '.env' });
 
 export interface IPgConfig extends Knex.Config {
   connection: PgConnectionConfig;
@@ -39,7 +40,7 @@ const config: IConfig = {
       user: 'postgres',
       password: 'mysecretpassword',
     },
-    pool: { min: 0, max: 5 },
+    pool: { min: 0, max: 10 },
     seeds: {
       directory: path.join(__dirname, '/src/seeds/production'),
     },
