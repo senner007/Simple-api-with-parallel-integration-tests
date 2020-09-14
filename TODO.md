@@ -2,3 +2,5 @@
 - improve middleware error handler
 - install morgan
 - replace html test reporter
+- destry knex in afterAll
+- mock db config and handle threads in mock

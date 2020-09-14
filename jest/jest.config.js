@@ -25,6 +25,8 @@ module.exports = {
         pageTitle: 'Shopping lists test suites',
         sort: 'titleAsc',
         outputPath: 'coverage/test-report.html',
+        useCssFile: true,
+        styleOverridePath: 'new-theme.css',
       },
     ],
   ],

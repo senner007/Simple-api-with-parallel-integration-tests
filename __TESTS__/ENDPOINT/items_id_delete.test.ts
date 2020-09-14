@@ -6,10 +6,10 @@ import { EResponseCodes } from '../../src/controllers/api.router.interfaces';
 import { testRequests } from '../ENDPOINT_TEST_REQUESTS';
 
 describe(`
-    /lists/:id/items/:item_id - DELETE
-    {
-      "user_name": string,
-      "user_password": string,
+  /lists/:id/items/:item_id - DELETE
+  {
+    "user_name": string,
+    "user_password": string,
   }
   `, () => {
   beforeEach(async () => {
@@ -56,7 +56,7 @@ describe(`
     expect(response.status).toEqual(EResponseCodes.UNAUTHORIZED);
   });
 
-  it(`should NOT delete : 
+  it(`   should NOT delete : 
     - non existing item id 2 
     - by list id 1 
     - and return status 400
